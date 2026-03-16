@@ -24,4 +24,23 @@
 
 I prioritised **WebGL** stability and rapid iteration by avoiding heavy physics and complex camera systems. Manual collision handling and prefab instantiation made features fast to prototype, and audio layering provided dramatic weight without needing a large state machine. 
 
-> **Trade-offs:** The main technical trade-offs are
+> **Trade-offs:** The main technical trade-offs are runtime allocations from frequent `Instantiate` calls and predictable enemy patterns that reduce replay tension.
+
+---
+
+## 📈 Results and Next Steps
+
+Playtests showed the recoil mechanic delivers skillful satisfaction, and the timer adds genuine drama. However, players tend to discover safe patterns over repeated runs. 
+
+**Planned Improvements:**
+* Implement **object pooling** to remove Garbage Collection (GC) spikes.
+* Add **enemy behaviour variety** and dynamic spawns to break predictable routines.
+* Introduce **gamepad support** for broader accessibility.
+
+---
+
+## 📜 Credits & Assets
+
+* **Made by:** Christopher Kendrick
+* **Music:** ["Hitman" by Kevin MacLeod](https://incompetech.com) | Licensed under Creative Commons: By Attribution 4.0 License.
+* **Audio/Visuals:** [Tiny Dungeon & Impact Sounds by Kenney](https://kenney.nl)
