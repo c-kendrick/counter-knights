@@ -1,0 +1,43 @@
+{
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "draftLevel.tmx",
+    "expandedProjectPaths": [
+        "."
+    ],
+    "fileStates": {
+        "TinyDungeon_Tilesheet.tsx": {
+            "scaleInDock": 2,
+            "scaleInEditor": 3
+        },
+        "draftLevel.tmx": {
+            "scale": 0.75,
+            "selectedLayer": 4,
+            "viewCenter": {
+                "x": 38,
+                "y": -100.66666666666674
+            }
+        }
+    },
+    "last.imagePath": "C:/Users/Christopher/Documents/GitHub/comp1151-pracwk8-ckendrick-mqu/comp1151-game-prototype-ckendrick-mqu/COMP1151 Game Prototype/Assets/Tiled/TilemapGame/kenney_tiny-dungeon/Tilemap",
+    "map.fixedSize": false,
+    "map.lastUsedFormat": "tmx",
+    "map.tileHeight": 16,
+    "map.tileWidth": 16,
+    "openFiles": [
+        "TinyDungeon_Tilesheet.tsx",
+        "draftLevel.tmx"
+    ],
+    "project": "gameTilemap2.tiled-project",
+    "recentFiles": [
+        "TinyDungeon_Tilesheet.tsx",
+        "draftLevel.tmx"
+    ],
+    "tileset.lastUsedFormat": "tsx",
+    "tileset.tileSize": {
+        "height": 16,
+        "width": 16
+    }
+}
