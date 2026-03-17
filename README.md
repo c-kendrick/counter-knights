@@ -2,7 +2,7 @@
 
 [Play in Browser Here](https://ckendrick-mqu.itch.io/counter-knights-arcane-offensive) 
 
-![Counter Knights Gameplay](./images/knights.png)
+![Counter Knights Gameplay](./screenshots/knights.png)
 
 A Unity WebGL application demonstrating real-time vector math, deterministic state management, and algorithmic input calculation. While presented as a tactical 2D shooter, the project serves as a practical application of custom physics mathematics, AI state machines, and browser-based performance optimisation.
 
