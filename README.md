@@ -24,7 +24,7 @@ I prioritised **WebGL** stability and rapid iteration by avoiding heavy physics 
 
 * **Dynamic Recoil Math:** A recoil variable increases whenever the player moves or shoots. When a spell is fired, this variable determines how far "off" the shot will deviate from the mouse's exact aim point. A timer constantly decays this recoil variable, and the decay rate accelerates when the player stops moving and shooting.
 * **Combat Systems:** Spells are prefab-driven, allowing independent tuning of damage and spread without touching core code. Characters use lightweight variables to track health internally rather than relying on UI-heavy health bars.
-* **Enemy Logic:** Enemies use simple raycasting to determine line-of-sight. Breaking LOS triggers a basic finite state machine (Idle → See Player → Shoot) that spawns projectile prefabs, keeping the loop tight and performant.
+* **Raycasting Enemy Logic:** Enemies use raycasting to determine line-of-sight. Breaking LOS triggers a basic finite state machine (Idle → See Player → Shoot) that spawns projectile prefabs, keeping the loop tight and performant.
 * **Environment & UI:** Tilemaps and a UI layer updated by gameplay scripts allow level and HUD iteration to happen quickly.
 
 > **Trade-offs:** The main technical trade-offs are runtime allocations from frequent `Instantiate` calls and predictable enemy patterns that reduce replay tension.
