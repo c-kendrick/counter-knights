@@ -1,48 +1,43 @@
-## 🎮 How to Play
+# Counter Knights: Arcane Offensive
 
-**Goal:** Storm the castle and kill everybody before the timer runs out to win!
+[Play in Browser Here](https://ckendrick-mqu.itch.io/counter-knights-arcane-offensive) | [View Source Code](https://github.com/c-kendrick/counter-knights/)
 
-* **Movement:** Use `W` `A` `S` `D` to move.
-* **Combat:** Aim with the mouse, and shoot spells with `Left Click`.
-* **Mana:** "Reload" your mana points with `Right Click`.
-* **Pro-Tips:** For better aiming, stand still and shoot slower. Take a breather in the sandy areas—there are no enemies there!
+![Counter Knights Gameplay](./images/knights.png)
 
----
-
-## 🎯 Design Focus
-
-**Recoil** is the prototype's core design pillar and shapes every player decision. 
-
-* **Pacing:** Pacing is driven organically by level design. Safe zones (like the sand) simply lack enemy placement, giving players a natural breather to manage their recoil and mana.
-* **Predictability:** Transform-based movement ensures player motion is deterministic, which keeps the core recoil mechanic feeling fair and predictable.
+A highly performant WebGL application demonstrating real-time vector math, deterministic state management, and algorithmic input calculation. While presented as a tactical 2D shooter, the project serves as a practical application of custom physics mathematics, AI state machines, and browser-based performance optimisation.
 
 ---
 
-## ⚙️ Technical Implementation
+## Core Application Loop
 
-I prioritised **WebGL** stability and rapid iteration by avoiding heavy physics engines and complex camera systems.
-
-* **Dynamic Recoil Math:** A recoil variable increases whenever the player moves or shoots. When a spell is fired, this variable determines how far "off" the shot will deviate from the mouse's exact aim point. A timer constantly decays this recoil variable, and the decay rate accelerates when the player stops moving and shooting.
-* **Combat Systems:** Spells are prefab-driven, allowing independent tuning of damage and spread without touching core code. Characters use lightweight variables to track health internally rather than relying on UI-heavy health bars.
-* **Raycasting Enemy Logic:** Enemies use raycasting to determine line-of-sight. Breaking LOS triggers a basic finite state machine (Idle → See Player → Shoot) that spawns projectile prefabs, keeping the loop tight and performant.
-* **Environment & UI:** Tilemaps and a UI layer updated by gameplay scripts allow level and HUD iteration to happen quickly.
-
-> **Trade-offs:** The main technical trade-offs are runtime allocations from frequent `Instantiate` calls and predictable enemy patterns that reduce replay tension.
+* **Objective:** Users must navigate a 2D environment and eliminate all target entities within a strict time constraint.
+* **Input & Resource Management:** Movement (WASD) and action execution (Mouse) are tied to a finite resource pool (Mana) that requires manual state resetting (Right Click).
+* **Algorithmic Recoil (The Core Pillar):** The primary user challenge revolves around a dynamic recoil system. Player movement and rapid inputs continuously increase a deviation variable, forcing users to balance input speed with calculated accuracy. Safe zones within the environment naturally pace the application, allowing decay rates to reset.
 
 ---
 
-## 📈 Results and Next Steps
+## Technical Implementation
 
-Playtests showed the recoil mechanic delivers skillful satisfaction, and the timer adds genuine drama. However, players tend to discover safe patterns over repeated runs. 
+I prioritised WebGL stability and rapid iteration by avoiding heavy, pre-built physics engines and complex camera systems.
 
-**Planned Improvements:**
-* Implement **object pooling** to remove Garbage Collection (GC) spikes.
-* Add **enemy behaviour variety** and dynamic spawns to break predictable routines.
-* Introduce **gamepad support** for broader accessibility.
+* **Mathematical Deviation Tracking:** The core combat loop relies on a custom recoil algorithm. It calculates precise deviation using dynamic variables that increase with action frequency and decay over time. This ensures user input directly dictates the underlying mathematical state.
+* **Finite State Machines (FSM):** Enemy logic is driven by raycasting for line-of-sight checks. Establishing or breaking LOS triggers a lightweight FSM (Idle → Detect → Execute) that manages AI behaviour without bogging down the main execution thread.
+* **Deterministic Movement:** To ensure browser stability, movement is strictly transform-based rather than physics-driven. This keeps motion entirely deterministic, predictable, and computationally inexpensive.
+* **Component-Driven Design:** Action outputs (spells) are prefab-driven, allowing independent tuning of variables (damage, spread) without modifying the core control flows. Characters use lightweight variables to track internal state rather than relying on UI-heavy event listeners.
+
+> **Trade-offs:** The current implementation relies on frequent object instantiation during the action loop, which introduces runtime memory allocations and predictable routines.
 
 ---
 
-## 📜 Credits & Assets
+## Roadmap & Optimisation
+
+* **Memory Management (Object Pooling):** Implement strict object pooling for projectiles to eliminate Garbage Collection (GC) spikes and ensure a consistent framerate lock.
+* **Procedural Behaviour:** Introduce dynamic spawn logic and expanded FSM states to introduce variance and break predictable AI routines.
+* **Input Accessibility:** Integrate comprehensive gamepad API support for broader hardware accessibility.
+
+---
+
+## Credits & Assets
 
 * **Made by:** Christopher Kendrick
 * **Music:** ["Hitman" by Kevin MacLeod](https://incompetech.com) | Licensed under Creative Commons: By Attribution 4.0 License.
