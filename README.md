@@ -13,16 +13,19 @@
 
 **Recoil** is the prototype's core design pillar and shapes every player decision. 
 
-* **Movement:** Transform-based, ensuring motion is deterministic and recoil remains predictable.
-* **Spells:** Prefab-driven, meaning damage, lifetime, and spread can be tuned without changing core code.
-* **Enemies:** Behavior uses raycast line-of-sight to spawn projectile prefabs, keeping combat tight and performant. 
-* **Environment & UI:** Tilemaps and a UI layer updated by gameplay scripts allow level and HUD iteration to happen quickly.
+* **Pacing:** Pacing is driven organically by level design. Safe zones (like the sand) simply lack enemy placement, giving players a natural breather to manage their recoil and mana.
+* **Predictability:** Transform-based movement ensures player motion is deterministic, which keeps the core recoil mechanic feeling fair and predictable.
 
 ---
 
 ## ⚙️ Technical Implementation
 
-I prioritised **WebGL** stability and rapid iteration by avoiding heavy physics and complex camera systems. Manual collision handling and prefab instantiation made features fast to prototype, and audio layering provided dramatic weight without needing a large state machine. 
+I prioritised **WebGL** stability and rapid iteration by avoiding heavy physics engines and complex camera systems.
+
+* **Dynamic Recoil Math:** A recoil variable increases whenever the player moves or shoots. When a spell is fired, this variable determines how far "off" the shot will deviate from the mouse's exact aim point. A timer constantly decays this recoil variable, and the decay rate accelerates when the player stops moving and shooting.
+* **Combat Systems:** Spells are prefab-driven, allowing independent tuning of damage and spread without touching core code. Characters use lightweight variables to track health internally rather than relying on UI-heavy health bars.
+* **Enemy Logic:** Enemies use simple raycasting to determine line-of-sight. Breaking LOS triggers a basic finite state machine (Idle → See Player → Shoot) that spawns projectile prefabs, keeping the loop tight and performant.
+* **Environment & UI:** Tilemaps and a UI layer updated by gameplay scripts allow level and HUD iteration to happen quickly.
 
 > **Trade-offs:** The main technical trade-offs are runtime allocations from frequent `Instantiate` calls and predictable enemy patterns that reduce replay tension.
 
