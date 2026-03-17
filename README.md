@@ -1,6 +1,6 @@
 # Counter Knights: Arcane Offensive
 
-[Play in Browser Here](https://ckendrick-mqu.itch.io/counter-knights-arcane-offensive) | [View Source Code](https://github.com/c-kendrick/counter-knights/)
+[Play in Browser Here](https://ckendrick-mqu.itch.io/counter-knights-arcane-offensive) 
 
 ![Counter Knights Gameplay](./images/knights.png)
 
